@@ -17,3 +17,5 @@ for p in con.find():                    # imprime todos os documentos/objetos (r
     pprint.pprint(p)
     print()
 
+
+pprint.pprint(con.find_one({'author':'Patrícia'}))    # documentos que satisfazem a seleção

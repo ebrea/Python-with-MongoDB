@@ -1,5 +1,5 @@
 # Consultando os documentos (posts) do banco de dados "bancoteste"
-import datetime
+from datetime import date, datetime
 import pprint
 import pymongo
 from pymongo import MongoClient
@@ -14,17 +14,24 @@ con = db.posts                          # conecta ao banco de dados
 #     pprint.pprint(p)
 #     print()
 
-print('Total de Documentos:', con.count_documents({}))  # quantidade de documentos (registros)
+print('Total de Documentos:', con.count_documents({}))  # quantidade de documentos (posts/registros)
+documento_selecionado = con.find_one({'author':'Patrícia'})   # Ele para no documento selecionado
+pprint.pprint(documento_selecionado)
+print()
+tag1 = documento_selecionado['tags']
+print(tag1)                                 # ['Python', 'MongoDB', 'SQL', 'html']
 
-# pprint.pprint(con.find_one({'author':'José'}))    # documentos que satisfazem a seleção
+print(f'\n*** Estou estudando {tag1[1]} com Python ***')   # *** Estou estudando MongoDB com Python ***
+
+data = documento_selecionado['date'].strftime('%d/%m/%Y')
+print(f' Este documento foi postado dia {data}')
+
 
 # print(con.count_documents({'tags':'MongoDB'}))     # quantidade de documentos cujas "tags" tem "MongoDB"
 
-for p in con.find().sort('author'): # imprime todos os documentos por ordem de "author"
-    print()
-    pprint.pprint(p)
-
-
+# for p in con.find().sort('author'): # imprime todos os documentos por ordem de "author"
+#     print()
+#     pprint.pprint(p)
 
 
 # resultado = db.profiles.create_index([('author', pymongo.ASCENDING)])       # author_1
@@ -32,10 +39,10 @@ for p in con.find().sort('author'): # imprime todos os documentos por ordem de "
 
 
 '''
-{'_id': ObjectId('6883c28b6542faa2620d44cd'),
- 'author': 'Maria',
- 'date': datetime.datetime(2025, 7, 25, 14, 44, 43, 231000),
- 'tags': ['Python', 'MongoDB', 'html'],
- 'text': 'Testando a inclusão de Itens'}
+{'_id': ObjectId('6886ae68392603f04e165493'),
+ 'author': 'Patrícia',
+ 'date': datetime.datetime(2025, 7, 27, 19, 55, 36, 815000),
+ 'tags': ['Python', 'MongoDB', 'SQL', 'html'],
+ 'text': 'O Palmeiras NÂO tem Mundial'}
  
 '''

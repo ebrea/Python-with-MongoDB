@@ -7,12 +7,12 @@ import pymongo                                      # ou inclui: "as pyM" para a
 cliente = pymongo.MongoClient('mongodb+srv://eberbrea:TCbMH6Fj6FzG7YSb@cluster0.hanztba.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 
 db = cliente.bancoteste           # Acessa o banco de dados chamado 'bancoteste'
-con = db.posts                      # Acessa ou cria a conexão "conexao" (ou conexao = db.bancoteste)
+con = db.posts                    # Acessa ou cria a conexão "conexao" (ou conexao = db.bancoteste) ou posts=db.posts
 # print(conexao)
-doc1 = {                            # Documento a ser inserido na coleção
-    "author": "Maria",
-    "text": "Treinando o MongoDB",
-    "title": "Vai Timão",
+doc1 = {                          # Documento a ser inserido na coleção
+    "author": "Patrícia",
+    "text": "O Palmeiras NÂO tem Mundial",
+    "tags": ["Python", "MongoDB", "SQL", "html"],
     "date": datetime.datetime.now(),
 }
 
